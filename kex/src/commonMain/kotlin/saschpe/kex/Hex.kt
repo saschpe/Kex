@@ -68,6 +68,7 @@ object Hex {
      *
      * @return a byte array containing the Hex encoded data.
      */
+    @JvmStatic
     fun encode(data: ByteArray): ByteArray = buildPacket { encodeInternal(data, this) }.readBytes()
 
     /**
@@ -75,6 +76,7 @@ object Hex {
      *
      * @return a byte array representing the decoded data.
      */
+    @JvmStatic
     fun decode(data: ByteArray): ByteArray = buildPacket { decodeInternal(data, this) }.readBytes()
 
     /**
@@ -82,6 +84,7 @@ object Hex {
      *
      * @return a byte array representing the decoded data.
      */
+    @JvmStatic
     fun decode(data: String): ByteArray = buildPacket { decodeInternal(data, this) }.readBytes()
 
     private fun encodeInternal(inBuf: ByteArray, inOff: Int, inLen: Int, outBuf: ByteArray, outOff: Int): Int {
@@ -192,5 +195,3 @@ object Hex {
 
     private fun ignore(c: Char) = c == '\n' || c == '\r' || c == '\t' || c == ' '
 }
-
-fun ByteArray.toHexString(): String = Hex.toHexString(this)
