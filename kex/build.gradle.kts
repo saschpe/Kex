@@ -11,12 +11,9 @@ repositories {
 }
 
 kotlin {
-    android()
+    android { publishAllLibraryVariants() }
     ios { binaries.framework("Kex") }
     iosSimulatorArm64 { binaries.framework("Kex") }
-    targets.withType(org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTargetWithSimulatorTests::class.java) {
-        testRuns["test"].deviceId = "iPhone 13"
-    }
     js {
         nodejs()
         compilations.all {
@@ -24,9 +21,7 @@ kotlin {
             kotlinOptions.moduleKind = "umd"
         }
     }
-    jvm {
-        testRuns["test"].executionTask.configure { useJUnitPlatform() }
-    }
+    jvm { testRuns["test"].executionTask.configure { useJUnitPlatform() } }
 
     sourceSets["commonMain"].dependencies {
         implementation("io.ktor:ktor-io:1.6.7")
@@ -38,6 +33,10 @@ kotlin {
     sourceSets["iosSimulatorArm64Test"].dependsOn(sourceSets["iosTest"])
 
     sourceSets.remove(sourceSets["androidAndroidTestRelease"]) // https://issuetracker.google.com/issues/152187160
+
+    targets.withType(org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTargetWithSimulatorTests::class.java) {
+        testRuns["test"].deviceId = "iPhone 13"
+    }
 }
 
 android {
