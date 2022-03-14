@@ -17,15 +17,29 @@
 package saschpe.kex
 
 val ByteArray.hexDecoded: String
-    get() = Hex.toHexString(this)
+    get() = hexDecodedBytes.decodeToString()
 
 val ByteArray.hexDecodedBytes: ByteArray
     get() = Hex.decode(this)
 
+val ByteArray.hexEncoded: String
+    get() = hexEncodedBytes.decodeToString()
+
 val ByteArray.hexEncodedBytes: ByteArray
     get() = Hex.encode(this)
 
-fun ByteArray.toHexString(): String = Hex.toHexString(this)
+fun ByteArray.toHexString(): String = hexEncoded
+
+val String.hexDecoded: String
+    get() = hexDecodedBytes.decodeToString()
 
 val String.hexDecodedBytes: ByteArray
     get() = Hex.decode(this)
+
+val String.hexEncoded: String
+    get() = hexEncodedBytes.decodeToString()
+
+val String.hexEncodedBytes: ByteArray
+    get() = Hex.encode(encodeToByteArray())
+
+fun String.toHexString(): String = hexEncoded
