@@ -21,7 +21,7 @@ import kotlin.jvm.JvmStatic
 import kotlin.math.min
 
 /**
- * Utility class for converting hex data to bytes and back again.
+ * Convert hex-encoded data to bytes and back again.
  */
 object Hex {
     private val encodingTable = byteArrayOf(
@@ -56,33 +56,33 @@ object Hex {
     }
 
     /**
-     * Encode the input data producing a Hex encoded byte array.
+     * Encode the input data producing a hex-encoded ByteArray.
      *
-     * @return a byte array containing the Hex encoded data.
+     * @return A String containing the hex-encoded data.
      */
     @JvmStatic
     fun toHexString(data: ByteArray): String = encode(data).decodeToString()
 
     /**
-     * Encode the input data producing a Hex encoded byte array.
+     * Encode the input data producing a hex-encoded ByteArray.
      *
-     * @return a byte array containing the Hex encoded data.
+     * @return A ByteArray containing the hex-encoded data.
      */
     @JvmStatic
     fun encode(data: ByteArray): ByteArray = buildPacket { encodeInternal(data, this) }.readBytes()
 
     /**
-     * Decode the Hex encoded input data. It is assumed the input data is valid.
+     * Decode the hex-encoded input data. It is assumed the input data is valid.
      *
-     * @return a byte array representing the decoded data.
+     * @return A ByteArray representing the decoded data.
      */
     @JvmStatic
     fun decode(data: ByteArray): ByteArray = buildPacket { decodeInternal(data, this) }.readBytes()
 
     /**
-     * Decode the Hex encoded String data - whitespace will be ignored.
+     * Decode the hex-encoded String data - whitespaces will be ignored.
      *
-     * @return a byte array representing the decoded data.
+     * @return A ByteArray representing the decoded data.
      */
     @JvmStatic
     fun decode(data: String): ByteArray = buildPacket { decodeInternal(data, this) }.readBytes()

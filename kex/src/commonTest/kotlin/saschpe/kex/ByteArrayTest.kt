@@ -16,13 +16,22 @@
 package saschpe.kex
 
 import kotlin.test.Test
+import kotlin.test.assertContentEquals
 import kotlin.test.assertEquals
 
-class HexTest {
+class ByteArrayTest {
     @Test
-    fun toHexString() {
-        assertEquals("0001020304050607", Hex.toHexString(byteArrayOf(0, 1, 2, 3, 4, 5, 6, 7)))
-        assertEquals("08090a0b0c0d0e0f", Hex.toHexString(byteArrayOf(8, 9, 10, 11, 12, 13, 14, 15)))
-        assertEquals("61e9", Hex.toHexString(byteArrayOf(97, -23)))
-    }
+    fun hexDecoded() = assertEquals("61e9", byteArrayOf(97, -23).hexDecoded)
+
+    @Test
+    fun hexDecodedBytes() = assertContentEquals(byteArrayOf(97, -23), byteArrayOf(54, 49, 101, 57).hexDecodedBytes)
+
+    @Test
+    fun hexEncoded() = assertEquals("61e9", byteArrayOf(97, -23).hexEncoded)
+
+    @Test
+    fun hexEncodedBytes() = assertContentEquals(byteArrayOf(54, 49, 101, 57), byteArrayOf(97, -23).hexEncodedBytes)
+
+    @Test
+    fun toHexString() = assertEquals("61e9", byteArrayOf(97, -23).toHexString())
 }
