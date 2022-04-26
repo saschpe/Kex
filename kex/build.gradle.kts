@@ -24,7 +24,7 @@ kotlin {
     jvm { testRuns["test"].executionTask.configure { useJUnitPlatform() } }
 
     sourceSets["commonMain"].dependencies {
-        implementation("io.ktor:ktor-io:1.6.7")
+        implementation("io.ktor:ktor-io:2.0.0")
     }
     sourceSets["commonTest"].dependencies {
         implementation(kotlin("test"))
@@ -52,7 +52,7 @@ android {
 }
 
 group = "de.peilicke.sascha"
-version = "1.0.4"
+version = "1.0.5"
 
 val javadocJar by tasks.registering(Jar::class) {
     archiveClassifier.set("javadoc")
