@@ -5,11 +5,6 @@ plugins {
     signing
 }
 
-repositories {
-    mavenCentral()
-    google()
-}
-
 kotlin {
     android { publishAllLibraryVariants() }
     ios { binaries.framework("Kex") }
@@ -24,7 +19,7 @@ kotlin {
     jvm { testRuns["test"].executionTask.configure { useJUnitPlatform() } }
 
     sourceSets["commonMain"].dependencies {
-        implementation("io.ktor:ktor-io:2.0.0")
+        implementation("io.ktor:ktor-io:2.0.1")
     }
     sourceSets["commonTest"].dependencies {
         implementation(kotlin("test"))
@@ -49,6 +44,8 @@ android {
     }
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+
+    testCoverage.jacocoVersion = "0.8.8"
 }
 
 group = "de.peilicke.sascha"
