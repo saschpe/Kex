@@ -5,21 +5,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Android:
+  - Support Android 12 [API level 32](https://developer.android.com/studio/releases/platforms#12)
 - Dependency update:
-  - [Kotlin-1.7.0](https://github.com/JetBrains/kotlin/releases/tag/v1.7.0)
-  - [Ktor-2.0.3](https://ktor.io/changelog/2.0#version-2-0-3)
+  - [Android Gradle Plugin 7.2.1](https://developer.android.com/studio/releases/gradle-plugin#7-2-0) 
+  - [Kotlin 1.7.0](https://github.com/JetBrains/kotlin/releases/tag/v1.7.0)
+  - [Ktor 2.0.3](https://ktor.io/changelog/2.0#version-2-0-3)
   
 ## [1.0.6] - 2022-05-04
 ### Changed
 - Dependency update:
-  - [Ktor-2.0.1](https://ktor.io/changelog/2.0#version-2-0-1)
+  - [Ktor 2.0.1](https://ktor.io/changelog/2.0#version-2-0-1)
 
 ## [1.0.5] - 2022-04-26
 ### Changed
 - Dependency update:
-  - [Gradle-7.4.2](https://docs.gradle.org/7.4.2/release-notes.html)
-  - [Kotlin-1.6.21](https://github.com/JetBrains/kotlin/releases/tag/v1.6.21)
-  - [Ktor-2.0.0](https://ktor.io/changelog/2.0#version-2-0-0)
+  - [Gradle 7.4.2](https://docs.gradle.org/7.4.2/release-notes.html)
+  - [Kotlin 1.6.21](https://github.com/JetBrains/kotlin/releases/tag/v1.6.21)
+  - [Ktor 2.0.0](https://ktor.io/changelog/2.0#version-2-0-0)
 
 ## [1.0.4] - 2022-03-15
 ### Changed
@@ -31,7 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Dependency update:
-  - [Gradle-7.4.1](https://docs.gradle.org/7.4.1/release-notes.html)
+  - [Gradle 7.4.1](https://docs.gradle.org/7.4.1/release-notes.html)
 
 ## [1.0.2] - 2022-03-10
 ### Changed
