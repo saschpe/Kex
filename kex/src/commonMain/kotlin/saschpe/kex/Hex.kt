@@ -99,21 +99,21 @@ object Hex {
         return outPos - outOff
     }
 
-    private fun encodeInternal(buf: ByteArray, out: Output): Int {
+    private fun encodeInternal(buf: ByteArray, output: Output): Int {
         var offM = 0
         var lenM = buf.size
         val tmp = ByteArray(72)
         while (lenM > 0) {
             val inLen = min(36, lenM)
             val outLen = encodeInternal(buf, offM, inLen, tmp, 0)
-            out.writeFully(tmp, 0, outLen)
+            output.writeFully(tmp, 0, outLen)
             offM += inLen
             lenM -= inLen
         }
         return lenM * 2
     }
 
-    private fun decodeInternal(data: ByteArray, out: Output): Int {
+    private fun decodeInternal(data: ByteArray, output: Output): Int {
         val off = 0
         val length = data.size
         var b1: Byte
@@ -143,18 +143,18 @@ object Hex {
             }
             buf[bufOff++] = (b1.toInt() shl 4 or b2.toInt()).toByte()
             if (bufOff == buf.size) {
-                out.writeFully(buf, 0, buf.size)
+                output.writeFully(buf, 0, buf.size)
                 bufOff = 0
             }
             outLen++
         }
         if (bufOff > 0) {
-            out.writeFully(buf, 0, bufOff)
+            output.writeFully(buf, 0, bufOff)
         }
         return outLen
     }
 
-    private fun decodeInternal(data: String, out: Output): Int {
+    private fun decodeInternal(data: String, output: Output): Int {
         var b1: Byte
         var b2: Byte
         var length = 0
@@ -182,13 +182,13 @@ object Hex {
             }
             buf[bufOff++] = (b1.toInt() shl 4 or b2.toInt()).toByte()
             if (bufOff == buf.size) {
-                out.writeFully(buf, 0, buf.size)
+                output.writeFully(buf, 0, buf.size)
                 bufOff = 0
             }
             length++
         }
         if (bufOff > 0) {
-            out.writeFully(buf, 0, bufOff)
+            output.writeFully(buf, 0, bufOff)
         }
         return length
     }

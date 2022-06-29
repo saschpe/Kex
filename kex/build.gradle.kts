@@ -19,7 +19,7 @@ kotlin {
     jvm { testRuns["test"].executionTask.configure { useJUnitPlatform() } }
 
     sourceSets["commonMain"].dependencies {
-        implementation("io.ktor:ktor-io:2.0.1")
+        implementation("io.ktor:ktor-io:2.0.3")
     }
     sourceSets["commonTest"].dependencies {
         implementation(kotlin("test"))
@@ -27,7 +27,12 @@ kotlin {
     sourceSets["iosSimulatorArm64Main"].dependsOn(sourceSets["iosMain"])
     sourceSets["iosSimulatorArm64Test"].dependsOn(sourceSets["iosTest"])
 
-    sourceSets.remove(sourceSets["androidAndroidTestRelease"]) // https://issuetracker.google.com/issues/152187160
+    sourceSets { // https://issuetracker.google.com/issues/152187160
+        remove(sourceSets["androidAndroidTestRelease"])
+        remove(sourceSets["androidTestFixtures"])
+        remove(sourceSets["androidTestFixturesDebug"])
+        remove(sourceSets["androidTestFixturesRelease"])
+    }
 
     targets.withType(org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTargetWithSimulatorTests::class.java) {
         testRuns["test"].deviceId = "iPhone 13"
@@ -35,12 +40,12 @@ kotlin {
 }
 
 android {
-    buildToolsVersion = "32.0.0"
-    compileSdk = 31
+    buildToolsVersion = "33.0.0"
+    compileSdk = 32
 
     defaultConfig {
         minSdk = 17
-        targetSdk = 31
+        targetSdk = 32
     }
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
@@ -49,16 +54,10 @@ android {
 }
 
 group = "de.peilicke.sascha"
-version = "1.0.6"
-
-val javadocJar by tasks.registering(Jar::class) {
-    archiveClassifier.set("javadoc")
-}
+version = "1.1.0"
 
 publishing {
     publications.withType<MavenPublication> {
-        artifact(javadocJar.get())
-
         pom {
             name.set("Kex")
             description.set("Hex string encoder/decoder for Kotlin/Multiplatform. Supports Android, iOS, JavaScript and plain JVM environments.")
