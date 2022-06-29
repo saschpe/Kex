@@ -56,8 +56,13 @@ android {
 group = "de.peilicke.sascha"
 version = "1.1.0"
 
+val javadocJar by tasks.registering(Jar::class) {
+    archiveClassifier.set("javadoc")
+}
+
 publishing {
     publications.withType<MavenPublication> {
+        artifact(javadocJar.get())
         pom {
             name.set("Kex")
             description.set("Hex string encoder/decoder for Kotlin/Multiplatform. Supports Android, iOS, JavaScript and plain JVM environments.")
