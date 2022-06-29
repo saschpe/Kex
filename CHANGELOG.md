@@ -5,13 +5,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.1.0] - 2022-06-29
 - Android:
   - Support Android 12 [API level 32](https://developer.android.com/studio/releases/platforms#12)
 - Dependency update:
-  - [Android Gradle Plugin 7.2.1](https://developer.android.com/studio/releases/gradle-plugin#7-2-0) 
+  - [Android Gradle Plugin 7.2.1](https://developer.android.com/studio/releases/gradle-plugin#7-2-0)
   - [Kotlin 1.7.0](https://github.com/JetBrains/kotlin/releases/tag/v1.7.0)
   - [Ktor 2.0.3](https://ktor.io/changelog/2.0#version-2-0-3)
-  
+
 ## [1.0.6] - 2022-05-04
 ### Changed
 - Dependency update:
