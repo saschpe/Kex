@@ -19,7 +19,7 @@ kotlin {
     jvm { testRuns["test"].executionTask.configure { useJUnitPlatform() } }
 
     sourceSets["commonMain"].dependencies {
-        implementation("io.ktor:ktor-io:2.0.1")
+        implementation("io.ktor:ktor-io:2.0.3")
     }
     sourceSets["commonTest"].dependencies {
         implementation(kotlin("test"))
@@ -51,14 +51,8 @@ android {
 group = "de.peilicke.sascha"
 version = "1.0.6"
 
-val javadocJar by tasks.registering(Jar::class) {
-    archiveClassifier.set("javadoc")
-}
-
 publishing {
     publications.withType<MavenPublication> {
-        artifact(javadocJar.get())
-
         pom {
             name.set("Kex")
             description.set("Hex string encoder/decoder for Kotlin/Multiplatform. Supports Android, iOS, JavaScript and plain JVM environments.")

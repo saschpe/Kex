@@ -28,5 +28,5 @@ object Secrets {
             }
         }
     }
-    named("assemble") { dependsOn(ensureSecretsExist) }
+    compileKotlin { dependsOn(ensureSecretsExist) }
 }

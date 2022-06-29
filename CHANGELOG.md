@@ -5,7 +5,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-
+- Dependency update:
+  - [Kotlin-1.7.0](https://github.com/JetBrains/kotlin/releases/tag/v1.7.0)
+  - [Ktor-2.0.3](https://ktor.io/changelog/2.0#version-2-0-3)
+  
 ## [1.0.6] - 2022-05-04
 ### Changed
 - Dependency update:
