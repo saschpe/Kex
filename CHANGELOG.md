@@ -5,13 +5,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Add targets: linuxX64, macosArm64, mingwX64
+  - Stop building frameworks, they aren't published by default
+
+### Changed
 - Dependency update:
+  - [Kotlin 1.7.10](https://github.com/JetBrains/kotlin/releases/tag/v1.7.10)
+  - [Gradle-7.5](https://docs.gradle.org/7.5/release-notes.html)
   - [Spotless-6.9.0](https://github.com/diffplug/spotless/blob/main/plugin-gradle/CHANGES.md#690---2022-07-28)
 
 ## [1.1.1] - 2022-06-29
+### Changed
 - Fix Maven Central publishing
 
 ## [1.1.0] - 2022-06-29
+### Changed
 - Android:
   - Support Android 12 [API level 32](https://developer.android.com/studio/releases/platforms#12)
 - Dependency update:
