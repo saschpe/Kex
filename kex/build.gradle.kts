@@ -7,8 +7,8 @@ plugins {
 
 kotlin {
     android { publishAllLibraryVariants() }
-    ios { binaries.framework("Kex") }
-    iosSimulatorArm64 { binaries.framework("Kex") }
+    ios()
+    iosSimulatorArm64()
     js {
         nodejs()
         compilations.all {
@@ -17,6 +17,11 @@ kotlin {
         }
     }
     jvm { testRuns["test"].executionTask.configure { useJUnitPlatform() } }
+    linuxX64()
+    macosArm64()
+    mingwX64() // Winwhat?!?
+    // tvos()
+    // watchos()
 
     sourceSets["commonMain"].dependencies {
         implementation("io.ktor:ktor-io:2.0.3")
@@ -54,7 +59,7 @@ android {
 }
 
 group = "de.peilicke.sascha"
-version = "1.1.1"
+version = "1.1.2"
 
 val javadocJar by tasks.registering(Jar::class) {
     archiveClassifier.set("javadoc")
