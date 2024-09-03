@@ -56,15 +56,15 @@ jobs:
         with:
           java-version: 17
       - name: Download .gradle folder
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v4.1.7
         with:
           name: .gradle
       - name: Download build folder
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v4.1.7
         with:
           name: build
       - name: Download kex/build folder
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v4.1.7
         with:
           name: kex_build
       - name: Publish to Sonatype (Maven Central)
