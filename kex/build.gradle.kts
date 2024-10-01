@@ -28,16 +28,15 @@ kotlin {
     }
 }
 
+java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+
 android {
-    buildToolsVersion = "33.0.0"
-    compileSdk = 32
+    namespace = "saschpe.kex"
 
     defaultConfig {
         minSdk = 17
-        targetSdk = 32
+        compileSdk = 32
     }
-
-    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
 
     testCoverage.jacocoVersion = "0.8.8"
 }

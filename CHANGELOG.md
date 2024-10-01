@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Changed
 - Dependency update:
-  - [Android Gradle Plugin 7.2.2](https://developer.android.com/studio/releases/gradle-plugin#7-2-0)
+  - [Android Gradle Plugin 8.5.2](https://developer.android.com/build/releases/past-releases/agp-8-5-0-release-notes)
   - [Gradle-7.5.1](https://docs.gradle.org/7.5.1/release-notes.html)
 
 ## [1.1.2] - 2022-08-01
