@@ -35,7 +35,7 @@ android {
 
     defaultConfig {
         minSdk = 21
-        compileSdk = 32
+        compileSdk = 34
     }
 
     testCoverage.jacocoVersion = "0.8.8"
