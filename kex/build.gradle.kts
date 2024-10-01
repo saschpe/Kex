@@ -6,41 +6,25 @@ plugins {
 }
 
 kotlin {
-    android { publishAllLibraryVariants() }
-    ios()
+    androidTarget { publishAllLibraryVariants() }
+    iosArm64()
+    iosX64()
     iosSimulatorArm64()
-    js {
-        nodejs()
-        compilations.all {
-            kotlinOptions.sourceMap = true
-            kotlinOptions.moduleKind = "umd"
-        }
-    }
-    jvm { testRuns["test"].executionTask.configure { useJUnitPlatform() } }
-    linuxX64()
+    js { nodejs() }
+    jvm()
     macosArm64()
-    mingwX64() // Winwhat?!?
-    // tvos()
-    // watchos()
+    tvosArm64()
+    watchosArm64()
 
-    sourceSets["commonMain"].dependencies {
-        implementation("io.ktor:ktor-io:2.0.3")
-    }
-    sourceSets["commonTest"].dependencies {
-        implementation(kotlin("test"))
-    }
-    sourceSets["iosSimulatorArm64Main"].dependsOn(sourceSets["iosMain"])
-    sourceSets["iosSimulatorArm64Test"].dependsOn(sourceSets["iosTest"])
+    applyDefaultHierarchyTemplate()
 
-    sourceSets { // https://issuetracker.google.com/issues/152187160
-        remove(sourceSets["androidAndroidTestRelease"])
-        remove(sourceSets["androidTestFixtures"])
-        remove(sourceSets["androidTestFixturesDebug"])
-        remove(sourceSets["androidTestFixturesRelease"])
-    }
-
-    targets.withType(org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTargetWithSimulatorTests::class.java) {
-        testRuns["test"].deviceId = "iPhone 13"
+    sourceSets {
+        commonMain.dependencies {
+            implementation("io.ktor:ktor-io:2.0.3")
+        }
+        commonTest.dependencies {
+            implementation(kotlin("test"))
+        }
     }
 }
 

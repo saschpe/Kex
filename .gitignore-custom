@@ -4,7 +4,5 @@
 .idea/artifacts
 .idea/libraries-with-intellij-classes.xml
 .idea/misc.xml
-**/pom.xml
-*.jks
+.kotlin/metadata
 buildSrc/src/main/kotlin/Secrets.kt
-kotlin-js-store
