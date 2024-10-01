@@ -41,15 +41,15 @@ android {
     testCoverage.jacocoVersion = "0.8.8"
 }
 
-group = "de.peilicke.sascha"
-version = "1.1.2"
-
 val javadocJar by tasks.registering(Jar::class) {
     archiveClassifier.set("javadoc")
 }
 
 publishing {
     publications.withType<MavenPublication> {
+        groupId = "de.peilicke.sascha"
+        version = "1.1.2"
+
         artifact(javadocJar.get())
         pom {
             name.set("Kex")
