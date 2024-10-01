@@ -28,13 +28,13 @@ kotlin {
     }
 }
 
-java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+java.toolchain.languageVersion.set(JavaLanguageVersion.of(21))
 
 android {
     namespace = "saschpe.kex"
 
     defaultConfig {
-        minSdk = 17
+        minSdk = 21
         compileSdk = 32
     }
 
