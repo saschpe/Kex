@@ -35,14 +35,11 @@ android {
 
     defaultConfig {
         minSdk = 21
-        compileSdk = 32
+        compileSdk = 34
     }
 
     testCoverage.jacocoVersion = "0.8.8"
 }
-
-group = "de.peilicke.sascha"
-version = "1.1.2"
 
 val javadocJar by tasks.registering(Jar::class) {
     archiveClassifier.set("javadoc")
@@ -50,6 +47,9 @@ val javadocJar by tasks.registering(Jar::class) {
 
 publishing {
     publications.withType<MavenPublication> {
+        groupId = "de.peilicke.sascha"
+        version = "1.1.2"
+
         artifact(javadocJar.get())
         pom {
             name.set("Kex")
