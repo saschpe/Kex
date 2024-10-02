@@ -40,7 +40,7 @@ object Hex {
         'c'.code.toByte(),
         'd'.code.toByte(),
         'e'.code.toByte(),
-        'f'.code.toByte()
+        'f'.code.toByte(),
     )
     private val decodingTable = ByteArray(128)
 
