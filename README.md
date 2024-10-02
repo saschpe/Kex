@@ -34,6 +34,14 @@ dependencies {
 }
 ```
 
+## Usage
+
+See the various unit test cases for the various conversion functions
+
+- [ByteArrayTest](kex/src/commonTest/kotlin/saschpe/kex/ByteArrayTest.kt)
+- [HexTest](kex/src/commonTest/kotlin/saschpe/kex/HexTest.kt)
+- [StringTest](kex/src/commonTest/kotlin/saschpe/kex/StringTest.kt)
+
 ## License
 
     Copyright 2022 Sascha Peilicke
