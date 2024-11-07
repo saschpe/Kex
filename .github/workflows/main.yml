@@ -45,9 +45,10 @@ jobs:
     if: github.ref == 'refs/heads/main'
     environment: Sonatype
     env:
+      ORG_GRADLE_PROJECT_sonatypePass: ${{ secrets.SONATYPE_API_KEY }}
+      ORG_GRADLE_PROJECT_sonatypeUser: ${{ secrets.SONATYPE_USER }}
       SONATYPE_GPG_KEY: ${{ secrets.SONATYPE_GPG_KEY }}
       SONATYPE_GPG_KEY_PASSWORD: ${{ secrets.SONATYPE_GPG_KEY_PASSWORD }}
-      SECRETS_KEY: ${{ secrets.SECRETS_KEY }}
     steps:
       - uses: actions/checkout@v4
         with:
