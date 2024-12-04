@@ -30,7 +30,7 @@ repositories {
 }
 
 dependencies {
-    implementation("de.peilicke.sascha:kex:1.1.2")
+    implementation("de.peilicke.sascha:kex:1.1.3")
 }
 ```
 

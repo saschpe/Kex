@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.1.3] - 2024-12-04
 ### Changed
 - Dependency update:
   - [Android Gradle Plugin 8.7.3](https://developer.android.com/build/releases/past-releases/agp-8-7-3-release-notes)
