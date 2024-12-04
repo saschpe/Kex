@@ -7,9 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Changed
 - Dependency update:
-  - [Android Gradle Plugin 8.5.2](https://developer.android.com/build/releases/past-releases/agp-8-5-0-release-notes)
-  - [Gradle-8.10.2](https://docs.gradle.org/8.10.2/release-notes.html)
-  - [ktor 2.3.12](https://ktor.io/changelog/2.3/)
+  - [Android Gradle Plugin 8.7.3](https://developer.android.com/build/releases/past-releases/agp-8-7-3-release-notes)
+  - [Gradle-8.11.1](https://docs.gradle.org/8.11.1/release-notes.html)
+  - [ktor 3.0.2](https://ktor.io/changelog/3.0/)
 
 ## [1.1.2] - 2022-08-01
 ### Added
