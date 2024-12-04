@@ -20,7 +20,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation("io.ktor:ktor-io:3.0.1")
+            implementation("io.ktor:ktor-io:3.0.2")
         }
         commonTest.dependencies {
             implementation(kotlin("test"))
