@@ -9,7 +9,8 @@ kotlin {
     android {
         namespace = "saschpe.kex"
         minSdk = 21
-        compileSdk = 34
+        compileSdk = 37
+        withHostTest { isIncludeAndroidResources = true }
     }
     iosArm64()
     iosX64()
