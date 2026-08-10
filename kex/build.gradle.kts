@@ -24,7 +24,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation("io.ktor:ktor-io:3.4.0")
+            implementation("io.ktor:ktor-io:3.5.2")
         }
         commonTest.dependencies {
             implementation(kotlin("test"))
@@ -44,7 +44,7 @@ publishing {
         groupId = "de.peilicke.sascha"
         version = "1.1.4"
 
-        artifact(javadocJar.get())
+        artifact(javadocJar)
         pom {
             name.set("Kex")
             description.set("Hex string encoder/decoder for Kotlin/Multiplatform. Supports Android, iOS, JavaScript and plain JVM environments.")

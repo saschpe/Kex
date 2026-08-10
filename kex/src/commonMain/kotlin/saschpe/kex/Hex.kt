@@ -15,7 +15,9 @@
  */
 package saschpe.kex
 
-import io.ktor.utils.io.core.*
+import kotlinx.io.Buffer
+import kotlinx.io.Sink
+import kotlinx.io.readByteArray
 import kotlin.experimental.or
 import kotlin.jvm.JvmStatic
 import kotlin.math.min
@@ -69,7 +71,7 @@ object Hex {
      * @return A ByteArray containing the hex-encoded data.
      */
     @JvmStatic
-    fun encode(data: ByteArray): ByteArray = buildPacket { encodeInternal(data, this) }.readBytes()
+    fun encode(data: ByteArray): ByteArray = Buffer().apply { encodeInternal(data, this) }.readByteArray()
 
     /**
      * Decode the hex-encoded input data. It is assumed the input data is valid.
@@ -77,7 +79,7 @@ object Hex {
      * @return A ByteArray representing the decoded data.
      */
     @JvmStatic
-    fun decode(data: ByteArray): ByteArray = buildPacket { decodeInternal(data, this) }.readBytes()
+    fun decode(data: ByteArray): ByteArray = Buffer().apply { decodeInternal(data, this) }.readByteArray()
 
     /**
      * Decode the hex-encoded String data - whitespaces will be ignored.
@@ -85,7 +87,7 @@ object Hex {
      * @return A ByteArray representing the decoded data.
      */
     @JvmStatic
-    fun decode(data: String): ByteArray = buildPacket { decodeInternal(data, this) }.readBytes()
+    fun decode(data: String): ByteArray = Buffer().apply { decodeInternal(data, this) }.readByteArray()
 
     private fun encodeInternal(inBuf: ByteArray, inOff: Int, inLen: Int, outBuf: ByteArray, outOff: Int): Int {
         var inPos = inOff
@@ -99,21 +101,21 @@ object Hex {
         return outPos - outOff
     }
 
-    private fun encodeInternal(buf: ByteArray, output: Output): Int {
+    private fun encodeInternal(buf: ByteArray, output: Sink): Int {
         var offM = 0
         var lenM = buf.size
         val tmp = ByteArray(72)
         while (lenM > 0) {
             val inLen = min(36, lenM)
             val outLen = encodeInternal(buf, offM, inLen, tmp, 0)
-            output.writeFully(tmp, 0, outLen)
+            output.write(tmp, 0, outLen)
             offM += inLen
             lenM -= inLen
         }
         return lenM * 2
     }
 
-    private fun decodeInternal(data: ByteArray, output: Output): Int {
+    private fun decodeInternal(data: ByteArray, output: Sink): Int {
         val off = 0
         val length = data.size
         var b1: Byte
@@ -143,18 +145,18 @@ object Hex {
             }
             buf[bufOff++] = (b1.toInt() shl 4 or b2.toInt()).toByte()
             if (bufOff == buf.size) {
-                output.writeFully(buf, 0, buf.size)
+                output.write(buf, 0, buf.size)
                 bufOff = 0
             }
             outLen++
         }
         if (bufOff > 0) {
-            output.writeFully(buf, 0, bufOff)
+            output.write(buf, 0, bufOff)
         }
         return outLen
     }
 
-    private fun decodeInternal(data: String, output: Output): Int {
+    private fun decodeInternal(data: String, output: Sink): Int {
         var b1: Byte
         var b2: Byte
         var length = 0
@@ -182,13 +184,13 @@ object Hex {
             }
             buf[bufOff++] = (b1.toInt() shl 4 or b2.toInt()).toByte()
             if (bufOff == buf.size) {
-                output.writeFully(buf, 0, buf.size)
+                output.write(buf, 0, buf.size)
                 bufOff = 0
             }
             length++
         }
         if (bufOff > 0) {
-            output.writeFully(buf, 0, bufOff)
+            output.write(buf, 0, bufOff)
         }
         return length
     }
