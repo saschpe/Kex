@@ -1,12 +1,16 @@
 plugins {
     kotlin("multiplatform")
-    id("com.android.library")
+    id("com.android.kotlin.multiplatform.library")
     `maven-publish`
     signing
 }
 
 kotlin {
-    androidTarget { publishLibraryVariants() }
+    android {
+        namespace = "saschpe.kex"
+        minSdk = 21
+        compileSdk = 34
+    }
     iosArm64()
     iosX64()
     iosSimulatorArm64()
@@ -29,17 +33,6 @@ kotlin {
 }
 
 java.toolchain.languageVersion.set(JavaLanguageVersion.of(21))
-
-android {
-    namespace = "saschpe.kex"
-
-    defaultConfig {
-        minSdk = 21
-        compileSdk = 34
-    }
-
-    testCoverage.jacocoVersion = "0.8.8"
-}
 
 val javadocJar = tasks.register<Jar>("javadocJar") {
     description = "Assembles Kotlin docs with Javadoc"

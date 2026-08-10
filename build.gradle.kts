@@ -1,6 +1,6 @@
 plugins {
     kotlin("jvm") version "2.3.0" apply false
-    id("com.android.library") version "8.7.3" apply false
+    id("com.android.kotlin.multiplatform.library") version "9.1.1" apply false
     id("com.diffplug.spotless") version "8.2.0"
     id("com.github.ben-manes.versions") version "0.53.0"
 }
