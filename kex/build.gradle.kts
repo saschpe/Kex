@@ -6,7 +6,7 @@ plugins {
 }
 
 kotlin {
-    androidTarget { publishAllLibraryVariants() }
+    androidTarget { publishLibraryVariants() }
     iosArm64()
     iosX64()
     iosSimulatorArm64()
@@ -41,7 +41,8 @@ android {
     testCoverage.jacocoVersion = "0.8.8"
 }
 
-val javadocJar by tasks.registering(Jar::class) {
+val javadocJar = tasks.register<Jar>("javadocJar") {
+    description = "Assembles Kotlin docs with Javadoc"
     archiveClassifier.set("javadoc")
 }
 
@@ -77,13 +78,15 @@ publishing {
         }
     }
 
-    if (hasProperty("sonatypeUser") && hasProperty("sonatypePass")) {
+    val sonatypeUser = providers.gradleProperty("sonatypeUser")
+    val sonatypePass = providers.gradleProperty("sonatypePass")
+    if (sonatypeUser.isPresent && sonatypePass.isPresent) {
         repositories {
             maven {
                 name = "sonatype"
                 credentials {
-                    username = property("sonatypeUser") as String
-                    password = property("sonatypePass") as String
+                    username = sonatypeUser.get()
+                    password = sonatypePass.get()
                 }
                 url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2")
             }
@@ -92,11 +95,10 @@ publishing {
 }
 
 signing {
-    val sonatypeGpgKey = System.getenv("SONATYPE_GPG_KEY")
-    val sonatypeGpgKeyPassword = System.getenv("SONATYPE_GPG_KEY_PASSWORD")
-    when {
-        sonatypeGpgKey == null || sonatypeGpgKeyPassword == null -> useGpgCmd()
-        else -> useInMemoryPgpKeys(sonatypeGpgKey, sonatypeGpgKeyPassword)
+    val sonatypeGpgKey = providers.systemProperty("SONATYPE_GPG_KEY")
+    val sonatypeGpgKeyPassword = providers.systemProperty("SONATYPE_GPG_KEY_PASSWORD")
+    if (sonatypeGpgKey.isPresent && sonatypeGpgKeyPassword.isPresent) {
+        useInMemoryPgpKeys(sonatypeGpgKey.get(), sonatypeGpgKeyPassword.get())
+        sign(publishing.publications)
     }
-    sign(publishing.publications)
 }
