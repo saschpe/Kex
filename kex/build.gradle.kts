@@ -42,7 +42,7 @@ val javadocJar = tasks.register<Jar>("javadocJar") {
 publishing {
     publications.withType<MavenPublication> {
         groupId = "de.peilicke.sascha"
-        version = "1.1.4"
+        version = "1.2.0"
 
         artifact(javadocJar)
         pom {
